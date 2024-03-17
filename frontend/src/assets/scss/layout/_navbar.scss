@@ -1,0 +1,31 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.header {
+  background: v.$dark;
+  position: relative;
+  width: 100%;
+  //   Praise
+
+  .top-nav {
+    background: v.$dark;
+    padding: 14px 0;
+    border-bottom: 1px solid #ffffff2f;
+    .cat {
+      color: v.$light;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .social-icons {
+      @include m.d-flex(center, center, nowrap, 10px);
+
+      a {
+        display: inline-block;
+        @include m.icons(v.$dark-alt, v.$light);
+      }
+    }
+  }
+}

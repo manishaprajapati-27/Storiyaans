@@ -1,0 +1,19 @@
+{
+  "name": "storiyaans",
+  "version": "1.0.0",
+  "description": "A website for reading stories and create our own story",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Story",
+    "Read",
+    "Create"
+  ],
+  "author": "Manisha Prajapati",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}

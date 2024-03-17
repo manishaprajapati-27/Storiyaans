@@ -1,0 +1,82 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.footer {
+  position: relative;
+
+  .logo {
+    width: 220px;
+    margin-bottom: 20px;
+    background: v.$light;
+    padding: 20px;
+    border: 2px solid v.$primary;
+  }
+
+  .text {
+    position: relative;
+    z-index: 2;
+    top: 70px;
+
+    h5 {
+      font-size: 22px;
+      color: v.$light;
+      // font-family: v.$sans-serif-alt;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .links {
+      @include m.d-flex(center, start, wrap, 10px);
+    }
+
+    .text-link {
+      display: block;
+      margin-bottom: 10px;
+      color: v.$light-alt;
+      transition: 0.4s all ease;
+      @include m.d-flex(center, start, nowrap, 5px);
+
+      &:hover {
+        color: v.$secondary;
+      }
+
+      @media (max-width: v.$lg-breakpoint) {
+        margin-left: -30px;
+      }
+
+      @media (max-width: v.$md-breakpoint) {
+        margin-left: -70px;
+      }
+
+      @media (max-width: v.$sm-breakpoint) {
+        margin-left: 0;
+      }
+    }
+
+    .icon {
+      // @include m.icons(v.$secondary, v.$light);
+      color: v.$primary;
+      font-size: 20px;
+    }
+
+    .social-icons {
+      @include m.d-flex(flex-start, flex-start, nowrap, 22px);
+
+      a {
+        display: block;
+        font-size: 22px;
+        color: v.$light;
+        transition: 0.5s all ease;
+
+        &:hover {
+          color: v.$primary;
+        }
+      }
+    }
+  }
+
+  .copy {
+    background: v.$primary;
+    padding: 12px 0;
+  }
+}

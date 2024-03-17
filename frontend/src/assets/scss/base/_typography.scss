@@ -1,0 +1,86 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.heading {
+  display: block;
+  color: v.$dark;
+  font-weight: bold;
+  // font-family: v.$sans-serif-alt;
+  font-size: 35px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  line-height: 120%;
+
+  @media (max-width: v.$sm-breakpoint) {
+    font-size: 26px;
+  }
+
+  span {
+    color: v.$primary;
+  }
+
+  // .first-head {
+  //   -webkit-text-fill-color: transparent;
+  //   -webkit-text-stroke: 1px v.$light;
+  //   letter-spacing: 2px;
+  // }
+}
+
+.sub-heading {
+  color: v.$primary;
+  font-family: v.$cursive-alt;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 190%;
+
+  span {
+    display: inline-block;
+    width: 70px;
+    height: 3px;
+    background: v.$primary;
+    margin-bottom: 3px;
+  }
+}
+
+// Text Alignment
+
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-start {
+    text-align: start;
+  }
+  &-end {
+    text-align: end;
+  }
+}
+
+// Display flex
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+
+  &.align-items-center {
+    align-items: center;
+  }
+  &.align-items-start {
+    align-items: flex-start;
+  }
+  &.align-items-end {
+    align-items: flex-end;
+  }
+  &.justify-content-start {
+    justify-content: start;
+  }
+  &.justify-content-end {
+    justify-content: end;
+  }
+  &.justify-content-center {
+    justify-content: center;
+  }
+  &.justify-content-between {
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,93 @@
+@use '../abstract/variables' as v;
+
+// Create Grid 
+$grid-columns:12;
+$grid-gutter:1.5em;
+$max-page-width:1200px; 
+
+.row {
+  display: grid;
+  grid-template-columns: repeat($grid-columns, 1fr);
+  grid-gap: $grid-gutter;
+}
+
+// Build Grid
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    grid-column: span ($i);
+  }
+}
+
+@for $i from 1 through $grid-columns {
+  .col-sm-#{$i} {
+    grid-column: span ($i);
+  }
+}
+@for $i from 1 through $grid-columns {
+  .col-md-#{$i} {
+    grid-column: span ($i);
+  }
+}
+@for $i from 1 through $grid-columns {
+  .col-lg-#{$i} {
+    grid-column: span ($i);
+  }
+}
+@for $i from 1 through $grid-columns {
+  .col-xl-#{$i} {
+    grid-column: span ($i);
+  }
+}
+
+/* Break Points */
+
+/* Small */
+@media(max-width: v.$md-breakpoint) {
+
+  @for $i from 1 through $grid-columns {
+    .col-sm-#{$i} {
+      grid-column: span ($i);
+    }
+  }
+ /* helper classes */
+  .hidden-sm {display:none;}
+}
+
+/* Mediam */
+@media (max-width:v.$lg-breakpoint) and (min-width: v.$md-breakpoint) {
+
+  @for $i from 1 through $grid-columns {
+    .col-md-#{$i} {
+      grid-column: span ($i);
+    }
+  }
+ /* helper classes */
+  .hidden-md {display:none;}
+}
+
+/*Large */
+@media (min-width:v.$lg-breakpoint) {
+  @for $i from 1 through $grid-columns {
+    .col-lg-#{$i} {
+      grid-column: span ($i);
+    }
+  }
+ /* helper classes */
+  .hidden-lg {display:none;}
+}
+
+// offset, push and pull require more work
+@for $i from 1 through $grid-columns {
+  .offset-#{$i} {
+      grid-column-start: ($i + 1);
+      grid-column-end: span ($grid-columns - $i);
+    }  
+  .push-#{$i} {
+      grid-column-start: ($i + 1);
+      grid-column-end: span ($i);
+    }
+  .pull-#{$i} {
+      grid-column-start: ($grid-columns - $i);
+      grid-column-end: span ($i);
+    }
+}
