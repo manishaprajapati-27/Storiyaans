@@ -4,11 +4,11 @@
 .form-control,
 .form-select {
   display: block;
-  border-radius: 4px;
+  //   border-radius: 4px;
   width: 100%;
-  border: 1px solid v.$light-alt;
-  background: v.$light-alt;
-  color: v.$dark-alt;
+  border: 1px solid v.$dark-alt;
+  background: v.$dark-alt;
+  color: v.$light-alt;
   font-family: v.$sans-serif;
   padding: 10px 20px;
   font-size: 16px;

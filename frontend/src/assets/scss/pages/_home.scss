@@ -1,0 +1,70 @@
+@use "../abstract/variables" as v;
+@use "../abstract/mixins" as m;
+
+.hero {
+  position: relative;
+  .slider1 {
+    position: relative;
+    .image {
+      height: 600px;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    .text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px;
+      h2 {
+        font-size: 28px;
+        font-family: v.$sans-serif-alt;
+        color: v.$light;
+        font-weight: 600;
+        display: block;
+        padding-bottom: 10px;
+        border-bottom: 1px solid v.$primary;
+      }
+      h5 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: v.$primary;
+      }
+    }
+  }
+  .slider2 {
+    position: relative;
+    .slick-slide {
+      position: relative;
+      padding: 10px;
+      .image {
+        height: 200px;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+      .text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        h2 {
+          font-size: 20px;
+          font-family: v.$sans-serif-alt;
+          color: v.$light;
+          font-weight: 600;
+          display: block;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+}

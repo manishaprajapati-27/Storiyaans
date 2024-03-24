@@ -28,4 +28,110 @@
       }
     }
   }
+
+  .navbar {
+    background: v.$dark;
+
+    .logo {
+      display: block;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px 0;
+      border-bottom: 1px solid #ffffff2f;
+      position: relative;
+
+      .ms-ico {
+        position: absolute;
+        background: v.$primary;
+        color: v.$dark;
+        font-weight: 500;
+        padding: 15px;
+        border-radius: 50px;
+        top: 4%;
+        right: 30%;
+        transform: translateX(-30%) rotate(5deg);
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          height: 15px;
+          width: 15px;
+          left: 5px;
+          background: v.$primary;
+        }
+      }
+
+      h2 {
+        font-family: v.$cursive;
+        color: v.$light;
+        letter-spacing: 2px;
+        margin-bottom: 4px;
+        font-size: 70px;
+
+        span {
+          color: v.$primary;
+          margin-right: 10px;
+        }
+      }
+      h6 {
+        font-size: 16px;
+        font-weight: 400;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -40px;
+          height: 2px;
+          width: 30px;
+          background: v.$primary;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -40px;
+          height: 2px;
+          width: 30px;
+          background: v.$primary;
+        }
+      }
+    }
+
+    .nav-links {
+      padding: 15px 0;
+      border-bottom: 1px solid #ffffff2f;
+
+      ul {
+        display: flex;
+        justify-content: start;
+        gap: 24px;
+        li {
+          a {
+            font-size: 16px;
+            font-weight: 500;
+            color: v.$light;
+            // text-transform: uppercase;
+          }
+        }
+      }
+
+      .search {
+        position: relative;
+        .icon {
+          height: 100%;
+          width: 40px;
+          color: v.$light;
+          background: v.$primary;
+          position: absolute;
+          top: 0;
+          right: 0;
+          @include m.d-flex(center, center, nowrap, 0);
+        }
+      }
+    }
+  }
 }
