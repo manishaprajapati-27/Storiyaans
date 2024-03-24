@@ -68,3 +68,39 @@
     }
   }
 }
+
+.tabsection {
+  .react-tabs__tab-list {
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    .react-tabs__tab {
+      position: relative;
+      padding: 14px 20px;
+      cursor: pointer;
+      border-radius: 0 !important;
+      border: 1px solid v.$light;
+      margin: 15px;
+      color: v.$light-alt;
+
+      &--selected {
+        background: v.$primary;
+        color: v.$dark-alt;
+        border-color: v.$primary;
+      }
+    }
+  }
+
+  .react-tabs__tab-panel {
+    .text {
+      margin-top: 20px;
+      h2 {
+        color: v.$light;
+        font-weight: bold;
+        font-family: v.$sans-serif-alt;
+      }
+    }
+  }
+}

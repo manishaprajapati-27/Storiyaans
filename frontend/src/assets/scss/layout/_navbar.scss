@@ -37,7 +37,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
-      padding: 20px 0;
+      padding: 35px 0 20px 0;
       border-bottom: 1px solid #ffffff2f;
       position: relative;
 
@@ -46,10 +46,10 @@
         background: v.$primary;
         color: v.$dark;
         font-weight: 500;
-        padding: 15px;
+        padding: 10px 12px;
         border-radius: 50px;
-        top: 4%;
-        right: 30%;
+        top: 7%;
+        right: 32%;
         transform: translateX(-30%) rotate(5deg);
 
         &::after {
@@ -58,7 +58,8 @@
           bottom: -5px;
           height: 15px;
           width: 15px;
-          left: 5px;
+          left: 18px;
+          transform: rotate(-42deg);
           background: v.$primary;
         }
       }
