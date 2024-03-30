@@ -1,5 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 
-const tagSchema = new Schema({});
+const tagSchema = new Schema(
+  {
+    tag: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
 
-export const Tag = mongoose.model("Comment", tagSchema);
+export const Tag = mongoose.model("Tag", tagSchema);
