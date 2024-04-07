@@ -28,7 +28,6 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="container">
-        <h2>Slider Syncing</h2>
         <div className="slider1">
           <Slider {...settings1} ref={(slider) => setSlider1(slider)}>
             <div>

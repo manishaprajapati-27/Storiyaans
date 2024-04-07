@@ -94,13 +94,88 @@
   }
 
   .react-tabs__tab-panel {
-    .text {
-      margin-top: 20px;
-      h2 {
-        color: v.$light;
-        font-weight: bold;
-        font-family: v.$sans-serif-alt;
+    .card {
+      .image {
+        height: 380px;
+        width: 200%;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      .text {
+        padding: 30px;
+        h2 {
+          color: v.$light;
+          font-weight: bold;
+          font-family: v.$sans-serif-alt;
+        }
+        .image-profile {
+          gap: 15px;
+          .img {
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            border-radius: 50%;
+
+            img {
+              @include m.img;
+            }
+          }
+          .text-pr {
+            h4 {
+              font-size: 17px;
+              color: v.$light;
+              font-weight: 600;
+
+              span {
+                font-style: italic;
+                font-weight: 400;
+                color: v.$light-alt;
+              }
+            }
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    .side-card {
+      .image {
+        height: 100px;
+        width: 100px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      .text {
+        padding: 20px;
+        h2 {
+          color: v.$light;
+          font-weight: bold;
+          font-family: v.$sans-serif-alt;
+        }
       }
     }
   }
+
+  .react-tabs__tab:focus:after {
+    display: none;
+  }
+}
+
+.comment {
+  display: inline-block;
+  color: #b4b4b4;
+  cursor: pointer;
 }
