@@ -5,19 +5,25 @@
   background: v.$dark;
   position: relative;
   width: 100%;
-  //   Praise
 
+  // Praise
   .top-nav {
     background: v.$dark;
     padding: 14px 0;
     border-bottom: 1px solid #ffffff2f;
     .cat {
-      color: v.$light;
-      font-size: 18px;
-      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 7px;
+
+      a {
+        color: v.$light-alt;
+        font-weight: 400;
+        font-size: 14px;
+        &:hover {
+          color: v.$primary;
+        }
+      }
     }
     .social-icons {
       @include m.d-flex(center, center, nowrap, 10px);

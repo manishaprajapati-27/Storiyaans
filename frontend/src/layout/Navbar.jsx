@@ -17,7 +17,9 @@ const Navbar = () => {
         <div className="container">
           <div className="d-flex justify-content-between">
             <div className="cat">
-              <FaBars /> Categories
+              <a href="#">Login</a>
+              <span className="text-light-alt">|</span>
+              <a href="#">Register</a>
             </div>
             <div className="social-icons">
               <a href="#">

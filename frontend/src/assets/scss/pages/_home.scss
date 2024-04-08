@@ -97,7 +97,7 @@
     .card {
       .image {
         height: 380px;
-        width: 200%;
+        width: 120%;
 
         img {
           height: 100%;
@@ -160,6 +160,7 @@
 
       .text {
         padding: 20px;
+        width: 100%;
         h2 {
           color: v.$light;
           font-weight: bold;
@@ -175,7 +176,9 @@
 }
 
 .comment {
-  display: inline-block;
+  display: flex;
   color: #b4b4b4;
   cursor: pointer;
+  align-items: center;
+  gap: 8px;
 }

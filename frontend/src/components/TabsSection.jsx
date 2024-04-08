@@ -2,6 +2,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Hero1 from "../assets/images/hero/1.jpg";
 import user from "../assets/images/user.jpg";
+import { FaRegComment } from "react-icons/fa6";
+import { IoTimerOutline } from "react-icons/io5";
 
 const TabsSection = () => {
   return (
@@ -32,19 +34,21 @@ const TabsSection = () => {
                         <h4>
                           <span>By</span> Manisha
                         </h4>
-                        <p>07 April 2024</p>
+                        <p className="comment">
+                          <IoTimerOutline /> 07 April 2024
+                        </p>
                       </div>
                     </div>
                     <h2 className="mb-1">Any content 1</h2>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
-                      dolorem illo itaque, nobis modi et similique alias porro
-                      minus voluptatem dignissimos pariatur, iure odit assumenda
-                      omnis culpa sed natus?
+                      dolorem illo itaque, nobis modi.
                     </p>
 
-                    <span className="comment mt-1">2 comments</span>
+                    <span className="comment mt-1">
+                      <FaRegComment /> 2 comments
+                    </span>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -60,7 +64,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -69,7 +75,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -78,7 +86,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
               </div>
@@ -100,19 +110,21 @@ const TabsSection = () => {
                         <h4>
                           <span>By</span> Manisha
                         </h4>
-                        <p>07 April 2024</p>
+                        <p className="comment">
+                          <IoTimerOutline /> 07 April 2024
+                        </p>
                       </div>
                     </div>
                     <h2 className="mb-1">Any content 1</h2>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
-                      dolorem illo itaque, nobis modi et similique alias porro
-                      minus voluptatem dignissimos pariatur, iure odit assumenda
-                      omnis culpa sed natus?
+                      dolorem illo itaque, nobis modi.
                     </p>
 
-                    <span className="comment mt-1">2 comments</span>
+                    <span className="comment mt-1">
+                      <FaRegComment /> 2 comments
+                    </span>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -128,7 +140,14 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -137,7 +156,14 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -146,7 +172,14 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -168,19 +201,21 @@ const TabsSection = () => {
                         <h4>
                           <span>By</span> Manisha
                         </h4>
-                        <p>07 April 2024</p>
+                        <p className="comment">
+                          <IoTimerOutline /> 07 April 2024
+                        </p>
                       </div>
                     </div>
                     <h2 className="mb-1">Any content 1</h2>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
-                      dolorem illo itaque, nobis modi et similique alias porro
-                      minus voluptatem dignissimos pariatur, iure odit assumenda
-                      omnis culpa sed natus?
+                      dolorem illo itaque, nobis modi et.
                     </p>
 
-                    <span className="comment mt-1">2 comments</span>
+                    <span className="comment mt-1">
+                      <FaRegComment /> 2 comments
+                    </span>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -196,7 +231,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -205,7 +242,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -214,7 +253,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
               </div>
@@ -236,19 +277,21 @@ const TabsSection = () => {
                         <h4>
                           <span>By</span> Manisha
                         </h4>
-                        <p>07 April 2024</p>
+                        <p className="comment">
+                          <IoTimerOutline /> 07 April 2024
+                        </p>
                       </div>
                     </div>
                     <h2 className="mb-1">Any content 1</h2>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
-                      dolorem illo itaque, nobis modi et similique alias porro
-                      minus voluptatem dignissimos pariatur, iure odit assumenda
-                      omnis culpa sed natus?
+                      dolorem illo itaque, nobis modi.
                     </p>
 
-                    <span className="comment mt-1">2 comments</span>
+                    <span className="comment mt-1">
+                      <FaRegComment /> 2 comments
+                    </span>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -264,7 +307,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -273,7 +318,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -282,7 +329,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
               </div>
@@ -304,19 +353,21 @@ const TabsSection = () => {
                         <h4>
                           <span>By</span> Manisha
                         </h4>
-                        <p>07 April 2024</p>
+                        <p className="comment">
+                          <IoTimerOutline /> 07 April 2024
+                        </p>
                       </div>
                     </div>
                     <h2 className="mb-1">Any content 1</h2>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
-                      dolorem illo itaque, nobis modi et similique alias porro
-                      minus voluptatem dignissimos pariatur, iure odit assumenda
-                      omnis culpa sed natus?
+                      dolorem illo itaque, nobis modi.
                     </p>
 
-                    <span className="comment mt-1">2 comments</span>
+                    <span className="comment mt-1">
+                      <FaRegComment /> 2 comments
+                    </span>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -332,7 +383,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -341,7 +394,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -350,7 +405,9 @@ const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">2 comments</span>
+                    <span className="comment">
+                      <FaRegComment /> 2 comments
+                    </span>
                   </div>
                 </div>
               </div>
