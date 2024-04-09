@@ -13,4 +13,11 @@
 2. Setup the basic of project to create server.
 3. Connect Mongo DB
 4. Util for create custom error objects.
-5.
+5. For user authentication
+   - Make user controller
+     - Register user
+     - Check if user already exist
+     -
+   - Make router for user authentication
+   - Import routes in app
+   - Make link for user route

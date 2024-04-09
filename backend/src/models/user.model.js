@@ -2,6 +2,12 @@ import mongoose, { Schema } from "mongoose";
 
 const userSchema = new Schema(
   {
+    fullName: {
+      type: String,
+      required: true,
+      index: true,
+      trim: true,
+    },
     username: {
       type: String,
       required: true,
@@ -17,15 +23,8 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
     },
-    fullName: {
-      type: String,
-      required: true,
-      index: true,
-      trim: true,
-    },
     avatar: {
       type: String,
-      required: true,
     },
     password: {
       type: String,
