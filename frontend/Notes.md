@@ -17,7 +17,8 @@
    - Make user controller
      - Register user
      - Check if user already exist
-     -
+     - User Entry
+     - 
    - Make router for user authentication
    - Import routes in app
    - Make link for user route
