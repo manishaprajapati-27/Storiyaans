@@ -18,7 +18,11 @@
      - Register user
      - Check if user already exist
      - User Entry
-     - 
+     -
    - Make router for user authentication
    - Import routes in app
    - Make link for user route
+
+## Backend Modules
+
+1. Register - Done

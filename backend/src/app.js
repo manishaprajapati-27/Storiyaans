@@ -28,7 +28,13 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js";
-// Routes
-app.use("/api/v1/users", userRouter);
 
+// Routes
+app.use("/api/users", userRouter);
+
+app.post("/api", (req, res) => {
+  res.json({
+    message: "Hello World!",
+  });
+});
 export default app;

@@ -5,9 +5,14 @@ import { User } from "../models/user.model.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 
-// Register User 
+// Register User
 const registerUser = asyncHandler(async (req, res) => {
+  //   console.log("Sucess");
+  //   res.status(200).json({
+  //     message: "ok",
+  //   });
   const { fullName, username, email, password } = req.body;
+  console.log(req.body);
   if (
     [fullName, username, email, password].some((field) => field?.trim() === "")
   ) {
@@ -27,88 +32,35 @@ const registerUser = asyncHandler(async (req, res) => {
     }
   }
 
-  let avatarLocalPath;
-  if (
-    req.files &&
-    Array.isArray(req.files.avatar) &&
-    req.files.avatar.length > 0
-  ) {
-    avatarLocalPath = req.files.avatar[0].path;
-  }
+  //   //   let avatarLocalPath;
+  //   //   if (
+  //   //     req.files &&
+  //   //     Array.isArray(req.files.avatar) &&
+  //   //     req.files.avatar.length > 0
+  //   //   ) {
+  //   //     avatarLocalPath = req.files.avatar[0].path;
+  //   //   }
 
-  const avatar = await uploadOnCloudinary(avatarLocalPath);
+  //   //   const avatar = await uploadOnCloudinary(avatarLocalPath);
 
-  const userEntry = await User.create({
+  const createdUser = await User.create({
     fullName,
-    avatar: avatar?.url || "",
     email,
     password,
-    username: username.toLowerCase(),
+    username,
   });
 
-  const createdUser = await User.findById(userEntry._id).select(
+  const user = await User.findById(createdUser._id).select(
     "-password -refreshToken"
   );
 
-  if (!createdUser) {
+  if (!user) {
     throw new ApiError(500, "Something went wrong while registering user 😑");
   }
 
   return res
     .status(201)
-    .json(new ApiResponse(200, createdUser, "User Registered Successfully 😀"));
+    .json(new ApiResponse(200, user, "User Registered Successfully 😀"));
 });
-
-// Login User
-// const loginUser = asyncHandler(async (req, res) => {
-//   const { email, username, password } = req.body;
-
-//   if (!username && !email) {
-//     throw new ApiError(400, "Username or Email is required 😐");
-//   }
-
-//   const user = await User.findOne({
-//     $or: [{ email }, { username }],
-//   });
-
-//   if (!user) {
-//     throw new ApiError(401, "User does not exist ☹️");
-//   }
-
-//   const isPasswordValid = await user.isPasswordCorrect(password);
-
-//   if (!isPasswordValid) {
-//     throw new ApiError(401, "Invalid user credentials");
-//   }
-
-//   const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
-//     user._id
-//   );
-
-//   const loggedInUser = await User.findById(user._id).select(
-//     "-password -refreshToken"
-//   );
-
-//   const options = {
-//     httpOnly: true,
-//     secure: true,
-//   };
-
-//   return res
-//     .status(200)
-//     .cookie("accessToken", accessToken, options)
-//     .cookie("refreshToken", refreshToken, options)
-//     .json(
-//       new ApiResponse(
-//         200,
-//         {
-//           user: loggedInUser,
-//           accessToken,
-//           refreshToken,
-//         }, // This is good If User want to save Accesstoken and Refreshtoken from itself.
-//         "User logged In Successfully"
-//       )
-//     );
-// });
 
 export { registerUser };
