@@ -25,4 +25,16 @@
 
 ## Backend Modules
 
-1. Register - Done
+1. Register
+2. Login
+3. Logout
+4. Categories
+5. Blog
+6. Blog detail
+7. News
+8. News detail
+9. Tags
+10. Like
+
+Sn = n/2[2a(n-1)d]
+tn = a+(n-1)\*d

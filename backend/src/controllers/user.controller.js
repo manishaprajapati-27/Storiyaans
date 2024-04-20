@@ -2,11 +2,12 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { User } from "../models/user.model.js";
+import { generateAccessAndRefreshToken } from "../utils/generateAccessRefreshToken.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 
 // Register User
-const registerUser = asyncHandler(async (req, res) => {
+export const register = asyncHandler(async (req, res) => {
   //   console.log("Sucess");
   //   res.status(200).json({
   //     message: "ok",
@@ -63,4 +64,78 @@ const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, user, "User Registered Successfully 😀"));
 });
 
-export { registerUser };
+export const login = asyncHandler(async (req, res) => {
+  const { email, username, password } = req.body;
+
+  if (!username && !email) {
+    throw new ApiError(400, "Username and email is required");
+  }
+
+  const user = await User.findOne({
+    $or: [{ email }, { username }],
+  });
+
+  if (!user) {
+    throw new ApiError(401, "User does not exist.");
+  }
+
+  const isPasswordValid = await user.isPasswordCorrect(password);
+
+  if (!isPasswordValid) {
+    throw new ApiError(401, "Invalid User Credentials");
+  }
+
+  const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
+    user._id
+  );
+
+  const loggedInUser = await User.findById(user._id).select(
+    "-password -refreshToken"
+  );
+
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
+
+  return res
+    .status(200)
+    .cookie("accesstoken", accessToken, options)
+    .cookie("refreshtoken", refreshToken, options)
+    .json(
+      new ApiResponse(
+        200,
+        {
+          user: loggedInUser,
+          accessToken,
+          refreshToken,
+        },
+        "User Logged In Successfully."
+      )
+    );
+});
+
+export const logout = asyncHandler(async (req, res) => {
+  await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $unset: {
+        refreshToken: 1,
+      },
+    },
+    {
+      new: true,
+    }
+  );
+
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
+
+  return res
+    .status(200)
+    .clearCookie("accesstoken", options)
+    .clearCookie("refreshtoken", options)
+    .json(new ApiResponse(200, "User Logged Out Successfully."));
+});

@@ -1,15 +1,18 @@
 import { Router } from "express";
 import {
-  registerUser,
+  register,
+  login,
+  logout,
   //   updateUserAvatar,
 } from "../controllers/user.controller.js";
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
 // import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
-// router.route("/avatar");
-//   .patch(verifyJWT, upload.single("avatar"), updateUserAvatar);
-router.route("/register").post(registerUser);
+router.route("/register").post(register);
+router.route("/login").post(login);
+router.route("/logout").post(verifyJWT, logout);
 // router.route("/register").post(
 // //   upload.fields([
 // //     {
