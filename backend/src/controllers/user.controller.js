@@ -126,50 +126,94 @@ export const logout = asyncHandler(async (req, res) => {
 });
 
 // Refresh access token
-export const refreshAccessToken = asyncHandler(async (req, res) => {
-  try {
-    const incomingRefreshToken =
-      req.cookies.refreshToken || req.body.refreshToken;
+// export const refreshAccessToken = asyncHandler(async (req, res) => {
+//   try {
+//     const incomingRefreshToken =
+//       req.cookies.refreshToken || req.body.refreshToken;
 
-    if (!incomingRefreshToken) {
-      throw new ApiError(401, "Unauthorized Request");
-    }
+//     if (!incomingRefreshToken) {
+//       throw new ApiError(401, "Unauthorized Request");
+//     }
 
-    const decodedToken = jwt.verify(
-      incomingRefreshToken,
-      process.env.ACCESS_TOKEN_SECRET
-    );
+//     const decodedToken = jwt.verify(
+//       incomingRefreshToken,
+//       process.env.ACCESS_TOKEN_SECRET
+//     );
 
-    const user = User.findById(decodedToken?._id);
+//     const user = User.findById(decodedToken?._id);
 
-    if (!user) {
-      throw new ApiError(401, "Invalid refresh token");
-    }
+//     if (!user) {
+//       throw new ApiError(401, "Invalid refresh token");
+//     }
 
-    if (incomingRefreshToken !== user?.refreshToken) {
-      throw new ApiError(401, "Refresh token is expired or used");
-    }
+//     if (incomingRefreshToken !== user?.refreshToken) {
+//       throw new ApiError(401, "Refresh token is expired or used");
+//     }
 
-    const options = {
-      httpOnly: true,
-      secure: true,
-    };
+//     const options = {
+//       httpOnly: true,
+//       secure: true,
+//     };
 
-    const { accessToken, newrefreshToken } =
-      await generateAccessAndRefreshToken(user._id);
+//     const { accessToken, newrefreshToken } =
+//       await generateAccessAndRefreshToken(user._id);
 
-    return res
-      .status(200)
-      .cookie("accessToken", accessToken, options)
-      .cookie("refreshToken", newrefreshToken, options)
-      .json(
-        new ApiResponse(
-          200,
-          { accessToken, refreshToken: newrefreshToken },
-          "Access token is refreshed successfully"
-        )
-      );
-  } catch (error) {
-    throw new ApiError(401, error?.message, "Invalid refresh token");
+//     return res
+//       .status(200)
+//       .cookie("accessToken", accessToken, options)
+//       .cookie("refreshToken", newrefreshToken, options)
+//       .json(
+//         new ApiResponse(
+//           200,
+//           { accessToken, refreshToken: newrefreshToken },
+//           "Access token is refreshed successfully"
+//         )
+//       );
+//   } catch (error) {
+//     throw new ApiError(401, error?.message, "Invalid refresh token");
+//   }
+// });
+
+// Change Password
+export const changeCurrentPassword = asyncHandler(async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  const user = await User.findById(req.user?._id);
+  const isPasswordCorrect = user.isPasswordCorrect(oldPassword);
+
+  if (!isPasswordCorrect) {
+    throw new ApiError(400, "Invalid old password");
   }
+
+  user.password = newPassword;
+  await user.save({ validateBeforeSave: false });
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "Password Changed successfully"));
 });
+
+// // Update Account Details
+// export const updateAccountDetails = asyncHandler(async (req, res) => {
+//     const { fullName, email } = req.body;
+
+//     if (!fullName || !email) {
+//       throw new ApiError(401, "All fields are required");
+//     }
+
+//     const user = User.findById(
+//       req.user?._id,
+//       {
+//         $set: {
+//           fullName: fullName,
+//           email: email,
+//         },
+//       },
+//       {
+//         new: true,
+//       }
+//     ).select("-password");
+
+//     return res
+//       .status(200)
+//       .json(new ApiResponse(200, user, "Account details updated successfully"));
+//   });
