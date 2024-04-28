@@ -3,7 +3,10 @@ import mongoose, { Schema } from "mongoose";
 //
 const blogSchema = new Schema(
   {
-    blogContent: {
+    blogTitle: {
+      type: String,
+    },
+    blogDescription: {
       type: String,
     },
     auther: {
