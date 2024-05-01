@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 // blog
 //
-const blogSchema = new Schema(
+const blogPostSchema = new Schema(
   {
     blogTitle: {
       type: String,
@@ -29,4 +29,4 @@ const blogSchema = new Schema(
   { timestamps: true }
 );
 
-export const Blog = mongoose.model("Blog", blogSchema);
+export const BlogPost = mongoose.model("BlogPost", blogPostSchema);

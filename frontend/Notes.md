@@ -38,5 +38,5 @@
 11. Tags
 12. Like
 
-Sn = n/2[2a(n-1)d]
+Sn = n/2[2a+(n-1)d]
 tn = a+(n-1)\*d

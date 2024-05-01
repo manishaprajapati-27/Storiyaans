@@ -31,6 +31,7 @@ import userRouter from "./routes/user.routes.js";
 
 // Routes
 app.use("/api/users", userRouter);
+app.use("/api/blogs", userRouter);
 
 app.post("/api", (req, res) => {
   res.json({
