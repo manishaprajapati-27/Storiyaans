@@ -32,12 +32,28 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    role: {
+      type: String,
+      enum: ["user", "author", "admin"],
+      default: "user",
+    },
+    verified: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      typr: String,
+    },
+    verificationTokenExpires: {
+      type: Date,
+    },
     refreshToken: {
       type: String,
     },
   },
   { timestamps: true }
 );
+
 // Password encrypt
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
@@ -52,7 +68,6 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 };
 
 // Generate access token
-
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {

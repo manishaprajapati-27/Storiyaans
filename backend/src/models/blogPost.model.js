@@ -3,27 +3,33 @@ import mongoose, { Schema } from "mongoose";
 //
 const blogPostSchema = new Schema(
   {
-    blogTitle: {
+    title: {
       type: String,
     },
-    blogDescription: {
+    description: {
       type: String,
     },
-    auther: {
+    author: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    categories: {
+    category: {
       type: Schema.Types.ObjectId,
-      ref: "Categories",
+      ref: "Category",
     },
-    comment: {
-      type: Schema.Types.ObjectId,
-      ref: "Comment",
+    tags: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "tags",
+      },
+    ],
+    isPublic: {
+      type: Boolean,
+      default: true,
     },
-    likes: {
-      typr: Schema.Types.ObjectId,
-      ref: "Like",
+    isActive: {
+      type: Boolean,
+      default: true,
     },
   },
   { timestamps: true }

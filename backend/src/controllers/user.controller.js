@@ -4,6 +4,9 @@ import { ApiResponse } from "../utils/apiResponse.js";
 import { User } from "../models/user.model.js";
 import { generateAccessAndRefreshToken } from "../utils/generateAccessRefreshToken.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import { sendEmail } from "../utils/sendEmail.js";
+import crypto from "crypto";
+// import crypto
 import mongoose from "mongoose";
 
 // Register User
@@ -29,11 +32,16 @@ export const register = asyncHandler(async (req, res) => {
     }
   }
 
+  const verificationToken = crypto.randomBytes(32).toString("hex");
+  const verificationTokenExpires = Date.now() + 3600000;
+
   const createdUser = await User.create({
     fullName,
     email,
     password,
     username,
+    verificationToken,
+    verificationTokenExpires,
   });
 
   const user = await User.findById(createdUser._id).select(
@@ -44,11 +52,29 @@ export const register = asyncHandler(async (req, res) => {
     throw new ApiError(500, "Something went wrong while registering user 😑");
   }
 
+  const verificationUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/api/users/verify/${verificationToken}`;
+  const message = `Please click on the following link to verify your account: ${verificationUrl}`;
+
+  await sendEmail({
+    email: user.email,
+    subject: "Account Verifaction",
+    message,
+  });
+
   return res
     .status(201)
-    .json(new ApiResponse(200, user, "User Registered Successfully 😀"));
+    .json(
+      new ApiResponse(
+        200,
+        user,
+        "User Registered Successfully 😀. Please check your email for verification link."
+      )
+    );
 });
 
+// Login User
 export const login = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
 
@@ -100,6 +126,7 @@ export const login = asyncHandler(async (req, res) => {
     );
 });
 
+// Logout User
 export const logout = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
@@ -123,6 +150,33 @@ export const logout = asyncHandler(async (req, res) => {
     .clearCookie("accessToken", options)
     .clearCookie("refreshToken", options)
     .json(new ApiResponse(200, "User Logged Out Successfully."));
+});
+
+// Verify User
+export const verifyUser = asyncHandler(async (req, res) => {
+  const { token } = req.params;
+
+  if (!token) {
+    throw new ApiError(400, "Invalid or missing verification token");
+  }
+  const user = await User.findOne({
+    verificationToken: token,
+    verificationTokenExpires: { $get: Date.now() },
+  });
+
+  if (!user) {
+    throw new ApiError(400, "Invalid or expired verification token");
+  }
+
+  user.verified = true;
+  user.verificationToken = undefined;
+  user.verificationTokenExpires = undefined;
+  await user.save({
+    validateBeforeSave: false,
+  });
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "User verified Successfully."));
 });
 
 // Change Password

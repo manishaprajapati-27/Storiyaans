@@ -28,10 +28,11 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js";
+import blogRouter from "./routes/blog.routes.js";
 
 // Routes
 app.use("/api/users", userRouter);
-app.use("/api/blogs", userRouter);
+app.use("/api/blogs", blogRouter);
 
 app.post("/api", (req, res) => {
   res.json({
