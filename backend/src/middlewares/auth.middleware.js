@@ -32,11 +32,11 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
 });
 
 // Verify User
-export const isVerifiedUser = asyncHandler(async (req, _, next) => {
+export const isUserVerified = asyncHandler(async (req, _, next) => {
   try {
     const user = req.user;
     if (!user.verified) {
-      throw new ApiError(400, "Please verify your account first.");
+      throw new ApiError(400, "User is not verified");
     }
     next();
   } catch (error) {
@@ -54,5 +54,17 @@ export const isAuthor = asyncHandler(async (req, _, next) => {
     next();
   } catch (error) {
     throw new ApiError(401, error?.message);
+  }
+});
+
+export const isAdmin = asyncHandler(async (req, _, next) => {
+  try {
+    const user = req.user;
+    if (user.role !== "admin") {
+      throw new ApiError(403, "Access denied. Admins only.");
+    }
+    next();
+  } catch (error) {
+    throw new ApiError(403, error?.message);
   }
 });

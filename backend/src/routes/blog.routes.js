@@ -2,11 +2,13 @@ import { Router } from "express";
 import { createBlog } from "../controllers/blog.controller.js";
 import {
   verifyJWT,
-  isVerifiedUser,
+  isUserVerified,
   isAuthor,
 } from "../middlewares/auth.middleware.js";
 
 const router = Router();
-router.route("/create-blog").post(verifyJWT, isAuthor, createBlog);
+router
+  .route("/create-blog")
+  .post(verifyJWT, isUserVerified, isAuthor, createBlog);
 
 export default router;

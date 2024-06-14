@@ -23,20 +23,21 @@
    - Import routes in app
    - Make link for user route
 
-## Backend Modules
+## Backend Modules 
 
-1. Register
-2. Login
-3. Logout
-4. Change Password
-5. Update Profile
-6. Categories
-7. Blog
-8. Blog detail
-9. News
-10. News detail
-11. Tags
-12. Like
+1. Register Controller - Done
+2. Verify User 
+3. Login
+4. Logout
+5. Change Password
+6. Update Profile
+7. Categories
+8. Blog
+9. Blog detail
+10. News
+11. News detail
+12. Tags
+13. Like
 
 Sn = n/2[2a+(n-1)d]
 tn = a+(n-1)\*d

@@ -6,6 +6,7 @@ import { generateAccessAndRefreshToken } from "../utils/generateAccessRefreshTok
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
+
 // import crypto
 import mongoose from "mongoose";
 
@@ -179,6 +180,86 @@ export const verifyUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "User verified Successfully."));
 });
 
+// Request for change Role
+export const requestRoleChange = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  if (!user.verified) {
+    throw new ApiError(
+      400,
+      "User must verify their email to request a role change."
+    );
+  }
+
+  if (role.roleChangeRequest === "author") {
+    throw new ApiError(400, "Role change request is already pending.");
+  }
+  user.roleChangeRequest = "author";
+  await user.save();
+
+  res
+    .status(200)
+    .json(
+      new ApiResponse(200, user, "Role change request submitted successfully.")
+    );
+});
+
+// Role change request approve
+export const approveRoleChangeRequest = asyncHandler(async (req, res) => {
+  const { userId, approve } = req.body;
+
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new ApiError(404, "User not found.");
+  }
+  if (user.roleChangeRequest !== "auther") {
+    throw new ApiError(400, "No role change request found.");
+  }
+
+  if (approve) {
+    user.role = "author";
+  }
+  user.roleChangeRequest = "none";
+  await user.save();
+
+  res
+    .status(200)
+    .json(200, user, "Role change request processed successfully.");
+});
+
+// Update User Role
+export const updateUserRole = asyncHandler(async (req, res) => {
+  const { userId, role } = req.body;
+
+  const validRoles = ["user", "admin", "author"];
+  if (!validRoles.includes(role)) {
+    throw new ApiError(400, "Invalid role specified.");
+  }
+
+  // Find user by ID
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new ApiError(404, "User not found.");
+  }
+
+  // Check if user is verified
+  if (!user.verified) {
+    throw new ApiError(400, "User must be verified to change the role.");
+  }
+
+  // Update user role
+  user.role = role;
+  await user.save();
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, user, "User role updated successfully."));
+});
+
 // Change Password
 export const changeCurrentPassword = asyncHandler(async (req, res) => {
   const { oldPassword, newPassword } = req.body;
@@ -197,7 +278,7 @@ export const changeCurrentPassword = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "Password Changed successfully"));
 });
 
-// // Update Account Details
+// Update Account Details
 export const updateUserDetails = asyncHandler(async (req, res) => {
   const { fullName, email } = req.body;
 

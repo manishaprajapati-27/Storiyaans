@@ -8,6 +8,7 @@ export const sendEmail = async (options) => {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
     },
+    secure: process.env.EMAIL_PORT == 465,
   });
 
   const mailOptions = {
@@ -17,5 +18,5 @@ export const sendEmail = async (options) => {
     text: options.message,
   };
 
-  await transporter.sendEmail(mailOptions);
+  await transporter.sendMail(mailOptions);
 };
