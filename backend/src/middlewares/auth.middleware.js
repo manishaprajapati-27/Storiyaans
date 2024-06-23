@@ -35,8 +35,8 @@ export const verifyJWT = asyncHandler(async (req, _, next) => {
 export const isUserVerified = asyncHandler(async (req, _, next) => {
   try {
     const user = req.user;
-    if (!user.verified) {
-      throw new ApiError(400, "User is not verified");
+    if (!user.isVerified) {
+      throw new ApiError(400, "You need to verify your account fist.");
     }
     next();
   } catch (error) {

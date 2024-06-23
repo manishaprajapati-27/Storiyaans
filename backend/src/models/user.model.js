@@ -37,18 +37,23 @@ const userSchema = new Schema(
       enum: ["user", "author", "admin"],
       default: "user",
     },
-    verified: {
+    isVerified: {
       type: Boolean,
       default: false,
     },
     verificationToken: {
-      typr: String,
+      type: String,
     },
     verificationTokenExpires: {
       type: Date,
     },
     refreshToken: {
       type: String,
+    },
+    roleChangeRequest: {
+      type: String,
+      enum: ["none", "author"],
+      default: "none",
     },
   },
   { timestamps: true }

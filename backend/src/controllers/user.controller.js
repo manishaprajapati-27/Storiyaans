@@ -7,8 +7,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
 
-// import crypto
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 // Register User
 export const register = asyncHandler(async (req, res) => {
@@ -38,9 +37,10 @@ export const register = asyncHandler(async (req, res) => {
 
   const createdUser = await User.create({
     fullName,
-    email,
+    email: email.toLowerCase(),
     password,
     username,
+    isVerified: false,
     verificationToken,
     verificationTokenExpires,
   });
@@ -56,13 +56,22 @@ export const register = asyncHandler(async (req, res) => {
   const verificationUrl = `${req.protocol}://${req.get(
     "host"
   )}/api/users/verify/${verificationToken}`;
-  const message = `Please click on the following link to verify your account: ${verificationUrl}`;
+  const message = `Hello,\nPlease click on the following link to verify your account:\n${verificationUrl}`;
 
-  await sendEmail({
-    email: user.email,
-    subject: "Account Verifaction",
-    message,
-  });
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "Account Verifaction",
+      message,
+    });
+    console.log("Varification email sent to:", user.email);
+  } catch (error) {
+    console.log("Error in sending verification link:", error);
+    throw new ApiError(
+      500,
+      "Failed to send verification email. Please try again later."
+    );
+  }
 
   return res
     .status(201)
@@ -70,7 +79,7 @@ export const register = asyncHandler(async (req, res) => {
       new ApiResponse(
         200,
         user,
-        "User Registered Successfully 😀. Please check your email for verification link."
+        "User Registered Successfully 😀. Verification link sent to your mail."
       )
     );
 });
@@ -156,46 +165,56 @@ export const logout = asyncHandler(async (req, res) => {
 // Verify User
 export const verifyUser = asyncHandler(async (req, res) => {
   const { token } = req.params;
+  console.log("Verification Token: ", token);
 
   if (!token) {
+    console.log("Verification token is missing.");
     throw new ApiError(400, "Invalid or missing verification token");
   }
+
   const user = await User.findOne({
     verificationToken: token,
-    verificationTokenExpires: { $get: Date.now() },
+    verificationTokenExpires: { $gte: Date.now() },
   });
 
   if (!user) {
     throw new ApiError(400, "Invalid or expired verification token");
   }
 
-  user.verified = true;
-  user.verificationToken = undefined;
-  user.verificationTokenExpires = undefined;
-  await user.save({
-    validateBeforeSave: false,
-  });
+  try {
+    user.isVerified = true;
+    user.verificationToken = undefined;
+    user.verificationTokenExpires = undefined;
+
+    await user.save({
+      validateBeforeSave: false,
+    });
+  } catch (error) {
+    console.error("Error verifying user:", error);
+  }
+
+  console.log("User verified successfully:", user.email);
   return res
     .status(200)
     .json(new ApiResponse(200, {}, "User verified Successfully."));
 });
 
 // Request for change Role
-export const requestRoleChange = asyncHandler(async (req, res) => {
+export const roleChangeRequest = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (!user) {
     throw new ApiError(404, "User not found");
   }
 
-  if (!user.verified) {
+  if (!user.isVerified) {
     throw new ApiError(
       400,
       "User must verify their email to request a role change."
     );
   }
 
-  if (role.roleChangeRequest === "author") {
+  if (user.roleChangeRequest === "author") {
     throw new ApiError(400, "Role change request is already pending.");
   }
   user.roleChangeRequest = "author";
@@ -212,11 +231,18 @@ export const requestRoleChange = asyncHandler(async (req, res) => {
 export const approveRoleChangeRequest = asyncHandler(async (req, res) => {
   const { userId, approve } = req.body;
 
+  console.log(
+    "Received  role change request for user: ",
+    userId,
+    "Approve: ",
+    approve
+  );
+
   const user = await User.findById(userId);
   if (!user) {
     throw new ApiError(404, "User not found.");
   }
-  if (user.roleChangeRequest !== "auther") {
+  if (user.roleChangeRequest !== "author") {
     throw new ApiError(400, "No role change request found.");
   }
 
@@ -247,7 +273,7 @@ export const updateUserRole = asyncHandler(async (req, res) => {
   }
 
   // Check if user is verified
-  if (!user.verified) {
+  if (!user.isVerified) {
     throw new ApiError(400, "User must be verified to change the role.");
   }
 

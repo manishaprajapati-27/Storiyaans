@@ -6,9 +6,16 @@ import { BlogPost } from "../models/blogPost.model.js";
 // Create blog post
 export const createBlog = asyncHandler(async (req, res) => {
   const { title, description, category, tags, isPublic, isActive } = req.body;
-  const { userId } = req.user;
+  const { userId, isVerified } = req.user;
 
-  // Check if all required fields are provided
+  if (!isVerified) {
+    throw new ApiError(
+      403,
+      "You need to verify your email to create a blog post"
+    );
+  }
+
+  // Check fields are provided
   if (!title || !description) {
     throw new ApiError(400, "Title and description are required.");
   }
@@ -37,7 +44,7 @@ export const createBlog = asyncHandler(async (req, res) => {
 });
 
 // Get all blog posts for a user
-export const getUserBlogPost = asyncHandler(async (req, res) => {
+export const getAllBlogPostOfUser = asyncHandler(async (req, res) => {
   const { userId } = req.user;
 
   const userBlogPosts = await BlogPost.find({ author: userId });
@@ -50,4 +57,43 @@ export const getUserBlogPost = asyncHandler(async (req, res) => {
         "User's blog posts retrieved successfully."
       )
     );
+});
+
+// Update blog post
+export const updateBlogPost = asyncHandler(async (req, res) => {
+  const { title, description, category, tags, isPublic, isActive } = req.body;
+  //   const { userId, isVerified } = req.user;
+  const blogPostId = req.params.id;
+
+  console.log("Received blogPostId:", blogPostId);
+
+  if (!blogPostId) {
+    throw new ApiError(400, "Blog post Id is required.");
+  }
+
+  //   Find Blog post By ID
+  const blogPost = await BlogPost.findById(blogPostId);
+
+  if (!blogPost) {
+    throw new ApiError(404, "Blog post not found.");
+  }
+
+  //   // Check fields are provided
+  //   if (!title || !description) {
+  //     throw new ApiError(400, "Title and description are required.");
+  //   }
+
+  //   Update blog post fields
+  blogPost.title = title;
+  blogPost.description = description;
+  blogPost.category = category;
+  blogPost.tags = tags;
+  blogPost.isPublic = isPublic;
+  blogPost.isActive = isActive;
+
+  await blogPost.save();
+
+  res
+    .status(200)
+    .json(new ApiResponse(200, blogPost, "Blog Post Updated Successfully."));
 });

@@ -8,7 +8,7 @@ import {
   updateUserDetails,
   verifyUser,
   updateUserRole,
-  requestRoleChange,
+  roleChangeRequest,
   approveRoleChangeRequest,
 } from "../controllers/user.controller.js";
 import {
@@ -20,19 +20,20 @@ import {
 // import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router();
+
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/logout").post(verifyJWT, logout);
 router.route("/refresh-access-token").post(verifyJWT, refreshAccessToken);
-router.get("/verify/:token").get(verifyUser);
+router.route("/verify/:token").get(verifyUser);
 router.route("/change-password").post(changeCurrentPassword);
 router.route("/update-user-details").post(verifyJWT, updateUserDetails);
 router
-  .route("request-role-change")
-  .post(verifyJWT, isUserVerified, requestRoleChange);
+  .route("/request-role-change")
+  .post(verifyJWT, isUserVerified, roleChangeRequest);
 router
-  .route("approve-role-change")
-  .post(verifyJWT, isUserVerified, approveRoleChangeRequest);
+  .route("/approve-role-change")
+  .post(verifyJWT, isUserVerified, isAdmin, approveRoleChangeRequest);
 router
   .route("/update-user-role")
   .post(verifyJWT, isUserVerified, isAdmin, updateUserRole);

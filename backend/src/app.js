@@ -29,10 +29,12 @@ app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js";
 import blogRouter from "./routes/blog.routes.js";
+// import sendEmailRoute from "./utils/sendEmail.js";
 
 // Routes
 app.use("/api/users", userRouter);
 app.use("/api/blogs", blogRouter);
+// app.use("/api/mail", sendEmailRoute);
 
 app.post("/api", (req, res) => {
   res.json({
