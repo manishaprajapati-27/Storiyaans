@@ -3,6 +3,7 @@ import {
   createBlog,
   getAllBlogPostOfUser,
   updateBlogPost,
+  deleteBlogPost,
 } from "../controllers/blog.controller.js";
 import {
   verifyJWT,
@@ -17,10 +18,12 @@ router
 router
   .route("/get-all-blog-post")
   .post(verifyJWT, isUserVerified, isAuthor, getAllBlogPostOfUser);
-router.route("/blogPost/:id").get(updateBlogPost);
 
-router
-  .route("/update-blog-post")
-  .post(verifyJWT, isUserVerified, isAuthor, updateBlogPost);
+router.route("/update-blog-post/:id").get(updateBlogPost);
+router.route("/delete-blog-post/:id").get(deleteBlogPost);
+
+// router
+//   .route("/update-blog-post")
+//   .post(verifyJWT, isUserVerified, isAuthor, updateBlogPost);
 
 export default router;

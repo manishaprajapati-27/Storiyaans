@@ -36,7 +36,8 @@
    - Creating, Updating, Deleting post controller
    - Verify User then allow to create blog
 2. Controller for Get all blog post by user.
-3. Controller for update Blog post.
+3. Controller for update Blog post using Id.
+4. Controller for delete Blog post using Id.
 
 ## Backend Modules
 

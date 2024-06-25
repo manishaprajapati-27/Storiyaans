@@ -78,11 +78,6 @@ export const updateBlogPost = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Blog post not found.");
   }
 
-  //   // Check fields are provided
-  //   if (!title || !description) {
-  //     throw new ApiError(400, "Title and description are required.");
-  //   }
-
   //   Update blog post fields
   blogPost.title = title;
   blogPost.description = description;
@@ -97,3 +92,19 @@ export const updateBlogPost = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, blogPost, "Blog Post Updated Successfully."));
 });
+
+// Delete blog post
+export const deleteBlogPost = asyncHandler(async (req, res) => {
+    const blogPostId = req.params.id;
+    console.log("Received blogPostId:", blogPostId);
+  
+    // Find and delete blog post
+    const blogPost = await BlogPost.findByIdAndDelete(blogPostId);
+  
+    if (!blogPost) {
+      return res.status(404).json(new ApiResponse(404, null, "Blog Post Not Found."));
+    }
+  
+    res.status(200).json(new ApiResponse(200, blogPost, "Blog Post Deleted Successfully."));
+  });
+  
