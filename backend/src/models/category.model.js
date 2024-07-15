@@ -2,12 +2,14 @@ import mongoose, { Schema } from "mongoose";
 
 const categorySchema = new Schema(
   {
-    category: {
+    title: {
+      type: String,
+    },
+    description: {
       type: String,
     },
   },
   { timestamps: true }
 );
-
 
 export const Category = mongoose.model("Category", categorySchema);

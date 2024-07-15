@@ -59,6 +59,21 @@ export const getAllBlogPostOfUser = asyncHandler(async (req, res) => {
     );
 });
 
+// Get all blog posts for a user
+export const getSingleBlogPost = asyncHandler(async (req, res) => {
+  const blogPostId = req.params.id;
+
+  if (!blogPostId) {
+    throw new ApiError(401, "Blog post id is required.");
+  }
+
+  const userBlogPost = await BlogPost.findById(blogPostId);
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, userBlogPost, "Blog retrived successfully."));
+});
+
 // Update blog post
 export const updateBlogPost = asyncHandler(async (req, res) => {
   const { title, description, category, tags, isPublic, isActive } = req.body;
@@ -95,16 +110,19 @@ export const updateBlogPost = asyncHandler(async (req, res) => {
 
 // Delete blog post
 export const deleteBlogPost = asyncHandler(async (req, res) => {
-    const blogPostId = req.params.id;
-    console.log("Received blogPostId:", blogPostId);
-  
-    // Find and delete blog post
-    const blogPost = await BlogPost.findByIdAndDelete(blogPostId);
-  
-    if (!blogPost) {
-      return res.status(404).json(new ApiResponse(404, null, "Blog Post Not Found."));
-    }
-  
-    res.status(200).json(new ApiResponse(200, blogPost, "Blog Post Deleted Successfully."));
-  });
-  
+  const blogPostId = req.params.id;
+  console.log("Received blogPostId:", blogPostId);
+
+  // Find and delete blog post
+  const blogPost = await BlogPost.findByIdAndDelete(blogPostId);
+
+  if (!blogPost) {
+    return res
+      .status(404)
+      .json(new ApiResponse(404, null, "Blog Post Not Found."));
+  }
+
+  res
+    .status(200)
+    .json(new ApiResponse(200, blogPost, "Blog Post Deleted Successfully."));
+});

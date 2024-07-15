@@ -29,11 +29,15 @@ app.use(cookieParser());
 
 import userRouter from "./routes/user.routes.js";
 import blogRouter from "./routes/blog.routes.js";
+import categoryRouter from "./routes/category.routes.js";
+import tagRouter from "./routes/tag.routes.js";
 // import sendEmailRoute from "./utils/sendEmail.js";
 
 // Routes
 app.use("/api/users", userRouter);
 app.use("/api/blogs", blogRouter);
+app.use("/api/category", categoryRouter);
+app.use("/api/tag", tagRouter);
 // app.use("/api/mail", sendEmailRoute);
 
 app.post("/api", (req, res) => {
@@ -42,3 +46,5 @@ app.post("/api", (req, res) => {
   });
 });
 export default app;
+
+// 7977719313

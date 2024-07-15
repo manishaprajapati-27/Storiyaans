@@ -4,6 +4,7 @@ import {
   getAllBlogPostOfUser,
   updateBlogPost,
   deleteBlogPost,
+  getSingleBlogPost,
 } from "../controllers/blog.controller.js";
 import {
   verifyJWT,
@@ -17,8 +18,9 @@ router
   .post(verifyJWT, isUserVerified, isAuthor, createBlog);
 router
   .route("/get-all-blog-post")
-  .post(verifyJWT, isUserVerified, isAuthor, getAllBlogPostOfUser);
+  .get(verifyJWT, isUserVerified, isAuthor, getAllBlogPostOfUser);
 
+router.route("/get-single-blog-post/:id").get(getSingleBlogPost);
 router.route("/update-blog-post/:id").get(updateBlogPost);
 router.route("/delete-blog-post/:id").get(deleteBlogPost);
 

@@ -254,7 +254,9 @@ export const approveRoleChangeRequest = asyncHandler(async (req, res) => {
 
   res
     .status(200)
-    .json(200, user, "Role change request processed successfully.");
+    .json(
+      new ApiResponse(200, user, "Role change request processed successfully.")
+    );
 });
 
 // Update User Role
