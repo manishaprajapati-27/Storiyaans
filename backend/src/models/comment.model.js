@@ -5,14 +5,18 @@ const commentSchema = new Schema(
     blog: {
       type: Schema.Types.ObjectId,
       ref: "Blog",
+      required: true,
+      index: true,
     },
-    content: {
+    comment: {
       type: String,
       required: true,
     },
     commentedBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
+      index: true,
     },
   },
   { timestamps: true }

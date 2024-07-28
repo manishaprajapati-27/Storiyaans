@@ -36,19 +36,47 @@
    - Creating, Updating, Deleting post controller
    - Verify User then allow to create blog
 2. Controller for Get all blog post by user.
-3. Controller for update Blog post using Id.
+3. Controller for update Blog post using Id and findByIdAndUpdate method.
 4. Controller for delete Blog post using Id.
+
+### Category controller and routes
+
+1. Create Category controller and router
+   - Creating, Updating, Deleting category controller
+2. Controller for Get all category by user.
+3. Controller for update category using Id and findByIdAndUpdate method.
+4. Controller for delete category using Id.
+
+### Tag controller and routes
+
+1. Create Tag controller and router
+   - Creating, Updating, Deleting tag controller
+2. Controller for Get all tag by user.
+3. Controller for update tag using Id and findByIdAndUpdate method.
+4. Controller for delete tag using Id.
+
+### Like controller and routes
+
+1. Create Like controller and router
+2. Get likes and liked by user using filter and using the populate method
+3. Delete like
+
+### Comment controller and routes
+
+1. Create comment controller and router
+2. Get comments, update and delete controller
+3. Delete comment
 
 ## Backend Modules
 
 1. Register Controller - Done
-2. Verify User
-3. Login
-4. Logout
-5. Change Password
+2. Verify User - Done
+3. Login - Done
+4. Logout - Done
+5. Change Password - Dome
 6. Update Profile
-7. Categories
-8. Blog
+7. Categories - Done
+8. Blog - Done
 9. Blog detail
 10. News
 11. News detail

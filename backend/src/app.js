@@ -31,6 +31,8 @@ import userRouter from "./routes/user.routes.js";
 import blogRouter from "./routes/blog.routes.js";
 import categoryRouter from "./routes/category.routes.js";
 import tagRouter from "./routes/tag.routes.js";
+import likeRouter from "./routes/like.routes.js";
+import commentRouter from "./routes/comment.routes.js";
 // import sendEmailRoute from "./utils/sendEmail.js";
 
 // Routes
@@ -38,6 +40,8 @@ app.use("/api/users", userRouter);
 app.use("/api/blogs", blogRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/tag", tagRouter);
+app.use("/api/like", likeRouter);
+app.use("/api/comment", commentRouter);
 // app.use("/api/mail", sendEmailRoute);
 
 app.post("/api", (req, res) => {
