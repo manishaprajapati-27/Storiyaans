@@ -1,0 +1,19 @@
+.alert {
+  padding: 15px 20px;
+  color: #fff;
+  margin-bottom: 20px;
+
+  &-danger {
+    background: #d33131;
+  }
+
+  &-success {
+    background: #066409;
+  }
+  &-warning {
+    background: #ada911;
+  }
+  &-info {
+    background: #11ada7;
+  }
+}

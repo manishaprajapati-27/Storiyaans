@@ -10,6 +10,11 @@
   background: v.$dark-alt;
   color: v.$light-alt;
   font-family: v.$sans-serif;
-  padding: 10px 20px;
+  padding: 1rem 1.5rem;
   font-size: 16px;
+  border: 1px solid v.$dark-alt;
+
+  &:focus {
+    border-color: v.$primary;
+  }
 }

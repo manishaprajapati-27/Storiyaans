@@ -73,7 +73,7 @@
 2. Verify User - Done
 3. Login - Done
 4. Logout - Done
-5. Change Password - Dome
+5. Change Password - Done
 6. Update Profile
 7. Categories - Done
 8. Blog - Done
@@ -81,7 +81,20 @@
 10. News
 11. News detail
 12. Tags
-13. Like
+13. Like - Done
 
-Sn = n/2[2a+(n-1)d]
-tn = a+(n-1)\*d
+### Hide Navbar in Specific page
+
+Used the useLocation from router dom & created array for locations & then created funtion for hide nav and show nav includes the location pathname. Then added the navbar component in that function.
+
+## Connect Frontend with Backend
+
+** Register User **
+
+1. Use useState for set fields and message.
+2. Handle register response using axios(for making http response). 
+3. Print error message if wrong response.
+4. Handle Register on Submit
+5. Print error message and success message
+6. 
+

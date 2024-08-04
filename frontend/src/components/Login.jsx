@@ -1,65 +1,74 @@
 import React from "react";
+import Hero1 from "../assets/images/hero/1.jpg";
 
 const Login = () => {
   return (
-    <section class="section login">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-md-8 col-sm-12 mx-auto">
-            <div class="card">
-              <div class="text">
-                <h2 class="heading">Welcome Again !</h2>
-                <p class="mb-3 text-light">Please log in to your account</p>
+    <section className="login">
+      <div className="container-fluid p-0">
+        <div className="row">
+          <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="image">
+              <img src={Hero1} alt="Login" />
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-8 col-sm-12">
+            <div className="card">
+              <div className="text">
+                <h2 className="heading">Welcome Again !</h2>
+                <p className="mb-2 text-light">Please log in to your account</p>
               </div>
-              <div class="form">
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">
-                    <i class="far fa-envelope-open"></i>
+              <form className="form">
+                <div className="input-group mb-2">
+                  <span className="input-group-text" id="basic-addon1">
+                    <i className="far fa-envelope-open"></i>
                   </span>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Enter Your Mail"
                     aria-label="Enter Your Mail"
                     aria-describedby="basic-addon1"
                   />
                 </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">
-                    <i class="far fa-key"></i>
+                <div className="input-group mb-2">
+                  <span className="input-group-text" id="basic-addon1">
+                    <i className="far fa-key"></i>
                   </span>
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Password"
                     aria-label="Password"
                     aria-describedby="basic-addon1"
                   />
                 </div>
-                <div class="d-flex justify-content-between">
-                  <div class="form-check">
+                <div className="d-flex justify-content-between">
+                  <div className="form-check rem">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       value=""
                       id="flexCheckDefault"
                     />
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <label
+                      className="form-check-label text-light-alt"
+                      htmlFor="flexCheckDefault"
+                    >
                       Remember Me
                     </label>
                   </div>
                   <p>
-                    <a href="./forgot.html">Forgot Password ?</a>
+                    <a href="./forgot.html">Forgot Password?</a>
                   </p>
                 </div>
-                <div class="text-center mt-4">
-                  <button class="button mb-2">Sign In</button>
+                <div className="text-center mt-4">
+                  <button className="button mb-2">Sign In</button>
                   <p>
-                    Don't have an account yet?
+                    Don't have an account yet?{" "}
                     <a href="./register.html">Sign up here</a>
                   </p>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
