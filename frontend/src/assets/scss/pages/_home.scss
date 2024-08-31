@@ -84,6 +84,8 @@
       border: 1px solid v.$light;
       margin: 15px;
       color: v.$light-alt;
+      font-size: 16px;
+      font-weight: 500;
 
       &--selected {
         background: v.$primary;
@@ -131,9 +133,10 @@
               font-size: 17px;
               color: v.$light;
               font-weight: 600;
+              margin-bottom: 5px;
 
               span {
-                font-style: italic;
+                // font-style: italic;
                 font-weight: 400;
                 color: v.$light-alt;
               }
@@ -160,11 +163,42 @@
 
       .text {
         padding: 20px;
-        width: 100%;
+        width: calc(100% - 100px);
         h2 {
           color: v.$light;
           font-weight: bold;
           font-family: v.$sans-serif-alt;
+        }
+      }
+    }
+    .blog-cards {
+      margin-top: 40px;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+      .blog-card {
+        h4 {
+          font-size: 30px;
+          margin-top: 25px;
+          margin-bottom: 10px;
+          color: v.$light;
+          font-family: v.$sans-serif-alt;
+        }
+        p {
+          font-size: 15px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          height: 44px;
+          line-height: 1.4;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        a {
+          font-size: 16px;
+          margin: 15px 0;
+          color: v.$primary;
         }
       }
     }

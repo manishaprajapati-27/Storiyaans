@@ -89,7 +89,7 @@ export const login = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
 
   if (!username && !email) {
-    throw new ApiError(400, "Username and email is required");
+    throw new ApiError(400, "Username or email is required");
   }
 
   const user = await User.findOne({
@@ -232,7 +232,7 @@ export const approveRoleChangeRequest = asyncHandler(async (req, res) => {
   const { userId, approve } = req.body;
 
   console.log(
-    "Received  role change request for user: ",
+    "Received role change request for user: ",
     userId,
     "Approve: ",
     approve

@@ -92,9 +92,11 @@ Used the useLocation from router dom & created array for locations & then create
 ** Register User **
 
 1. Use useState for set fields and message.
-2. Handle register response using axios(for making http response). 
+2. Handle register response using axios(for making http response).
 3. Print error message if wrong response.
 4. Handle Register on Submit
 5. Print error message and success message
-6. 
 
+** Login User **
+
+1. 

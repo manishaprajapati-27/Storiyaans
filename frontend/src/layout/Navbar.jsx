@@ -7,7 +7,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { FaFacebookF } from "react-icons/fa";
 
 const Navbar = () => {
@@ -17,9 +17,9 @@ const Navbar = () => {
         <div className="container">
           <div className="d-flex justify-content-between">
             <div className="cat">
-              <a href="#">Login</a>
+              <Link to="/login">Login</Link>
               <span className="text-light-alt">|</span>
-              <a href="#">Register</a>
+              <Link to="/register">Register</Link>
             </div>
             <div className="social-icons">
               <a href="#">

@@ -25,14 +25,6 @@
         }
       }
     }
-    .social-icons {
-      @include m.d-flex(center, center, nowrap, 10px);
-
-      a {
-        display: inline-block;
-        @include m.icons(v.$dark-alt, v.$light);
-      }
-    }
   }
 
   .navbar {
@@ -140,5 +132,14 @@
         }
       }
     }
+  }
+}
+
+.social-icons {
+  @include m.d-flex(center, center, nowrap, 10px);
+
+  a {
+    display: inline-block;
+    @include m.icons(v.$dark-alt, v.$light);
   }
 }

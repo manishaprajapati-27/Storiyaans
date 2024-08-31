@@ -118,6 +118,7 @@ export const TabsSection = () => {
   return (
     <section className="section tabsection">
       <div className="container">
+        <h2 className="text-center heading mb-2">Categories of Blogs</h2>
         <Tabs>
           <TabList>
             <Tab>Enterteniment</Tab>
@@ -154,10 +155,14 @@ export const TabsSection = () => {
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
                       dolorem illo itaque, nobis modi.
                     </p>
-
-                    <span className="comment mt-1">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between my-1">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -173,9 +178,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -184,9 +194,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -195,10 +210,101 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div className="blog-cards">
+              <div className="blog-card">
+                <div className="image">
+                  <img src={Hero1} alt="Blog" />
+                </div>
+                <div className="text">
+                  <h4>Lorem ipsum dolor sit amet.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Harum perspiciatis rem obcaecati ducimus cumque quaerat,
+                    voluptates vel delectus culpa nisi.
+                  </p>
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+              <div className="blog-card">
+                <div className="image">
+                  <img src={Hero1} alt="Blog" />
+                </div>
+                <div className="text">
+                  <h4>Lorem ipsum dolor sit amet.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Harum perspiciatis rem obcaecati ducimus cumque quaerat,
+                    voluptates vel delectus culpa nisi.
+                  </p>
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+              <div className="blog-card">
+                <div className="image">
+                  <img src={Hero1} alt="Blog" />
+                </div>
+                <div className="text">
+                  <h4>Lorem ipsum dolor sit amet.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Harum perspiciatis rem obcaecati ducimus cumque quaerat,
+                    voluptates vel delectus culpa nisi.
+                  </p>
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+              <div className="blog-card">
+                <div className="image">
+                  <img src={Hero1} alt="Blog" />
+                </div>
+                <div className="text">
+                  <h4>Lorem ipsum dolor sit amet.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Harum perspiciatis rem obcaecati ducimus cumque quaerat,
+                    voluptates vel delectus culpa nisi.
+                  </p>
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+              <div className="blog-card">
+                <div className="image">
+                  <img src={Hero1} alt="Blog" />
+                </div>
+                <div className="text">
+                  <h4>Lorem ipsum dolor sit amet.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Harum perspiciatis rem obcaecati ducimus cumque quaerat,
+                    voluptates vel delectus culpa nisi.
+                  </p>
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+              <div className="blog-card">
+                <div className="image">
+                  <img src={Hero1} alt="Blog" />
+                </div>
+                <div className="text">
+                  <h4>Lorem ipsum dolor sit amet.</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Harum perspiciatis rem obcaecati ducimus cumque quaerat,
+                    voluptates vel delectus culpa nisi.
+                  </p>
+                  <a href="#">Read More</a>
                 </div>
               </div>
             </div>
@@ -231,9 +337,14 @@ export const TabsSection = () => {
                       dolorem illo itaque, nobis modi.
                     </p>
 
-                    <span className="comment mt-1">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between my-1">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -321,10 +432,14 @@ export const TabsSection = () => {
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
                       dolorem illo itaque, nobis modi et.
                     </p>
-
-                    <span className="comment mt-1">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between my-1">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -340,9 +455,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -351,9 +471,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -362,9 +487,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -397,10 +527,14 @@ export const TabsSection = () => {
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
                       dolorem illo itaque, nobis modi.
                     </p>
-
-                    <span className="comment mt-1">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between my-1">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -416,9 +550,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -427,9 +566,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -438,9 +582,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -473,10 +622,14 @@ export const TabsSection = () => {
                       Aliquam quis quos rerum nisi deserunt esse laboriosam,
                       dolorem illo itaque, nobis modi.
                     </p>
-
-                    <span className="comment mt-1">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between my-1">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                     <div className="mt-2">
                       <a href="#" className="button">
                         Read More
@@ -492,9 +645,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -503,9 +661,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="side-card mt-2 bg-dark-alt d-flex align-items-center">
@@ -514,9 +677,14 @@ export const TabsSection = () => {
                   </div>
                   <div className="text">
                     <h2 className="mb-1">Any content 1</h2>
-                    <span className="comment">
-                      <FaRegComment /> 2 comments
-                    </span>
+                    <div className="d-flex justify-content-between">
+                      <span className="comment">
+                        <FaRegComment /> 2 comments
+                      </span>
+                      <span className="comment">
+                        <IoTimerOutline /> 08 April 2024
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
